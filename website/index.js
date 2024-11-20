@@ -12,7 +12,7 @@ function createAllCityBoxes() {
             let h2 = document.querySelector("h2");
             h2.innerHTML =`${city.name} (${city.country})`;
             document.querySelector("title").innerHTML =`${city.name}`;
-            cityBox.setAttribute("class", "target");
+            cityBox.setAttribute("class", "target cityBox");
         }
     }
 }
@@ -33,7 +33,11 @@ for (let i = 0; i < cities.length; i++) {
 }
 
 for (let city of cities) {
-    
+    let cityCell = document.createElement("div");
+    table.appendChild(cityCell);
+    cityCell.setAttribute("class", "cell")
+    cityCell.innerHTML = `${city.name}`;
+
 }
 
 
