@@ -19,6 +19,37 @@ function createAllCityBoxes() {
 
 createAllCityBoxes();
 
+
+function markAllCityBoxes (cityObject, kindOfCity) {
+
+}
+
+markAllCityBoxes()
+
+
+
+/*
+
+
+
+
+function findClosestFurthest (distances) {
+    const result = {
+        furthest: distances.distance,
+        closest: distances.distance
+    }
+
+    for (let distance of distances) {
+        if (distance.distance > result.furthest) {
+            result.furthest = distance.distance
+        }
+        if (distance.distance < result.closest) {
+            result.closest = distance.distance
+        }
+    }
+}
+*/
+
 let table = document.querySelector("#table");
 let blankDiv = document.createElement("div");
 table.appendChild(blankDiv);
@@ -32,14 +63,26 @@ for (let i = 0; i < cities.length; i++) {
     nrDiv.textContent = i
 }
 
+
+
+
+/*
 for (let city of cities) {
     let cityCell = document.createElement("div");
     table.appendChild(cityCell);
     cityCell.setAttribute("class", "cell")
     cityCell.innerHTML = `${city.name}`;
+    for (let distance of distances) {
+        if (city.id == distance.city1) {
+            let distanceDiv = document.createElement("div");
+            table.appendChild(distanceDiv);
+            distanceDiv.setAttribute("class", "cell");
+        } else if (city.id == distance.city2) {
 
+        }
+    }
 }
-
+*/
 
 // Recommended: constants with references to existing HTML-elements
 
