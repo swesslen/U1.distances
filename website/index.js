@@ -3,28 +3,28 @@
 const targetCityName = "Graz";
 
 function createAllCityBoxes() {
-    for(let city of cities) {
+    for (let city of cities) {
         const cityBox = document.createElement("div");
         document.querySelector("#cities").appendChild(cityBox);
         cityBox.setAttribute("class", "cityBox");
         cityBox.innerHTML = city.name;
-        if (targetCityName === city.name) {
+        /* if (targetCityName === city.name) {
             let h2 = document.querySelector("h2");
             h2.innerHTML =`${city.name} (${city.country})`;
             document.querySelector("title").innerHTML =`${city.name}`;
             cityBox.setAttribute("class", "target cityBox");
-        }
+        } */
     }
 }
 
 createAllCityBoxes();
 
 
-function markAllCityBoxes (cityObject, kindOfCity) {
+function markCityBox(cityObject, target) {
 
 }
 
-markAllCityBoxes()
+markCityBox()
 
 
 
@@ -63,27 +63,57 @@ for (let i = 0; i < cities.length; i++) {
     nrDiv.textContent = i
 }
 
+function createTable () {
+    const table = document.querySelector("#table");
+    
+    const rows = cities.length;
+    const columns = cities.length + 1;
 
+    for (let a = 0; a < columns; a++) {
+        const blankCell = document.createElement("div");
+        blankCell.setAttribute("class", "cell head_column");
 
+        if (a === 0) {
+            blankCell.textContent = "";
+        } else {
+            blankCell.textContent = cities[a - 1].id;
+        }
 
-/*
-for (let city of cities) {
-    let cityCell = document.createElement("div");
-    table.appendChild(cityCell);
-    cityCell.setAttribute("class", "cell")
-    cityCell.innerHTML = `${city.name}`;
-    for (let distance of distances) {
-        if (city.id == distance.city1) {
-            let distanceDiv = document.createElement("div");
-            table.appendChild(distanceDiv);
-            distanceDiv.setAttribute("class", "cell");
-        } else if (city.id == distance.city2) {
+        table.appendChild(blankCell);
+    }
 
+    for (let i = 0; i < rows; i++) {
+        let namesRow = document.createElement("div");
+        namesRow.innerHTML = `${cities[i].id}-${cities[i].name}`
+        namesRow.setAttribute("class", "cell head_row");
+
+        if ((i + 1) % 2 === 0) {
+            namesRow.setAttribute("class", "even_row")
+        }
+        table.appendChild(namesRow);
+
+        for (let j = 0; j < cities.length; j++) {
+            
         }
     }
 }
-*/
 
+/*
+let distanceValue = null;
+for (let distance of distances) {
+    create
+    if (
+        distance.city1 === city.id &&
+        distance.city2 === city.id
+    ) {
+        distanceValue = distance.distance;
+        break;
+    }
+    if (distance.city2 === city.id && distance.city1 === city.id) {
+        distanceValue = distance.distance
+    }
+}
+*/
 // Recommended: constants with references to existing HTML-elements
 
 
