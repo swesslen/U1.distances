@@ -111,7 +111,6 @@ function createTable() {
         }
     }
 }
-
 createTable();
 
 
