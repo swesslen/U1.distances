@@ -2,8 +2,6 @@
 
 const targetCityName = "Graz";
 
-
-
 function getTargetCityObject (cityName) {
     for (let city of cities) {
         if (cityName === city.name) {
@@ -37,7 +35,7 @@ function findClosestFurthest (targetCityObject) {
                     closestCityID = distance.city2;
                     closestValue = distance.distance;
                 } else {
-                    closestCityID = distance.city2;
+                    closestCityID = distance.city1;
                     closestValue = distance.distance;
                 }
             } 
@@ -66,7 +64,19 @@ function createAllCityBoxes(cityName) {
         if (closestFurthest === null) {
             continue;
         }
-        if (cityName === city.name) {}
+        if (cityName === city.name) {
+            cityBox.setAttribute("class", "target cityBox");
+            document.querySelector("h2").innerHTML = `${city.name} (${city.country})`;
+            document.querySelector("title").innerHTML = city.name;
+        }
+        if (closestFurthest[0] === city.id) {
+            cityBox.setAttribute("class", "closest cityBox");
+            cityBox.innerHTML = `${city.name} ligger ${closestFurthest[1] / 10} mil bort`;
+        }
+        if (closestFurthest[2] === city.id) {
+            cityBox.setAttribute("class", "furthest cityBox");
+            cityBox.innerHTML = `${city.name} ligger ${closestFurthest[3] / 10} mil bort`;
+        }
     }
 }
 
