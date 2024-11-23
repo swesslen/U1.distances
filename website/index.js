@@ -44,7 +44,28 @@ function findClosestFurthest (targetCityObject) {
     let furthestCityID = null;
     let furthestValue = 0;
 
-    for (let)
+    for (let distance of distances) {
+        if (targetID === distance.city1 || targetID === distance.city2) {
+            if (distance.distance < closestValue) {
+                if (targetID === distance.city1) {
+                    closestCityID = distance.city2;
+                    closestValue = distance.distance;
+                } else {
+                    closestCityID = distance.city2;
+                    closestValue = distance.distance;
+                }
+            } 
+            if (distance.distance > furthestValue) {
+                if (targetID === distance.city1) {
+                    furthestCityID = distance.city2;
+                    furthestValue = distance.distance;
+                } else {
+                    furthestCityID = distance.city1;
+                    furthestValue = distance.distance;
+                }
+            }
+        }
+    }
 
 }
 
