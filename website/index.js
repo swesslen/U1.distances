@@ -30,8 +30,22 @@ function getTargetCityObject (cityName) {
     return null;
 }
 
-function findClosestFurthest (distances) {
-    if ()    
+let targetCityObject = getTargetCityObject(targetCityName)
+
+function findClosestFurthest (targetCityObject) {
+    if (targetCityObject === null) {
+        return null
+    }    
+    let targetID = targetCityObject.id;
+
+    let closestCityID = null;
+    let closestValue = 1000000;
+
+    let furthestCityID = null;
+    let furthestValue = 0;
+
+    for (let)
+
 }
 
 
