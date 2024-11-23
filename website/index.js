@@ -1,6 +1,6 @@
 // Recommended: All functions declared here
 
-const targetCityName = "Graz";
+const targetCityName = prompt("Skriv en stad tack!");
 
 function getTargetCityObject (cityName) {
     for (let city of cities) {
