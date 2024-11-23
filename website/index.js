@@ -89,30 +89,30 @@ function createTable() {
     const rows = cities.length;
     const columns = cities.length + 1;
 
-    for (let a = 0; a < columns; a++) {
+    for (let column = 0; column < columns; column++) {
         const blankCell = document.createElement("div");
         blankCell.setAttribute("class", "cell head_column");
 
-        if (a === 0) {
+        if (column === 0) {
             blankCell.textContent = "";
         } else {
-            blankCell.textContent = cities[a - 1].id;
+            blankCell.textContent = cities[column - 1].id;
         }
 
         table.appendChild(blankCell);
     }
 
-    for (let i = 0; i < rows; i++) {
+    for (let row = 0; row < rows; row++) {
         let namesRow = document.createElement("div");
-        namesRow.innerHTML = `${cities[i].id}-${cities[i].name}`
+        namesRow.innerHTML = `${cities[row].id}-${cities[row].name}`
         namesRow.setAttribute("class", "head_row cell");
 
-        if ((i + 1) % 2 === 0) {
+        if ((row + 1) % 2 === 0) {
             namesRow.setAttribute("class", "cell head_row even_row")
         }
         table.appendChild(namesRow);
 
-        for (let j = 0; j < cities.length; j++) {
+        for (let column = 0; column < cities.length; column++) {
             const cell = document.createElement("div");
             cell.setAttribute("class", "cell");
             
@@ -120,13 +120,13 @@ function createTable() {
             let distanceValue = null;
             for (let distance of distances) {
                 if (
-                    distance.city1 === cities[i].id &&
-                    distance.city2 === cities[j].id
+                    distance.city1 === cities[row].id &&
+                    distance.city2 === cities[column].id
                 ) {
                     distanceValue = distance.distance;
                     break;
                 }
-                if (distance.city2 === cities[i].id && distance.city1 === cities[j].id) {
+                if (distance.city2 === cities[row].id && distance.city1 === cities[column].id) {
                     distanceValue = distance.distance
                 }
             }
@@ -135,10 +135,10 @@ function createTable() {
                 cell.innerHTML = `${distanceValue / 10}`;
             }
 
-            if (j % 2 === 0) {
+            if (column % 2 === 0) {
                 cell.style.backgroundColor = "BurlyWood"
             }
-            if ((i + 1) % 2 === 0) {
+            if ((row + 1) % 2 === 0) {
                 cell.setAttribute("class", "cell even_row")
             }
 
