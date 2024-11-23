@@ -2,13 +2,13 @@
 
 const targetCityName = "Graz";
 
-function createAllCityBoxes() {
+function createAllCityBoxes(cityName) {
     for (let city of cities) {
         const cityBox = document.createElement("div");
         document.querySelector("#cities").appendChild(cityBox);
         cityBox.setAttribute("class", "cityBox");
         cityBox.innerHTML = city.name;
-        if (targetCityName === city.name) {
+        if (cityName === city.name) {
             let h2 = document.querySelector("h2");
             h2.innerHTML =`${city.name} (${city.country})`;
             document.querySelector("title").innerHTML =`${city.name}`;
@@ -16,34 +16,23 @@ function createAllCityBoxes() {
         }
     }
 }
-createAllCityBoxes();
+createAllCityBoxes(targetCityName);
 
-
-function markCityBox(cityObject, target) {
-
+function getTargetCityObject (cityName) {
+    for (let city of cities) {
+        if (cityName === city.name) {
+            return city;
+        }
+    }
+    let h2 = document.querySelector("h2");
+    h2.innerHTML = `${cityName} finns inte i databasen`;
+    document.querySelector("title").innerHTML = `Not found`
+    return null;
 }
 
-markCityBox()
-
-
-
-/*
 function findClosestFurthest (distances) {
-    const result = {
-        furthest: distances.distance,
-        closest: distances.distance
-    }
-
-    for (let distance of distances) {
-        if (distance.distance > result.furthest) {
-            result.furthest = distance.distance
-        }
-        if (distance.distance < result.closest) {
-            result.closest = distance.distance
-        }
-    }
+    if ()    
 }
-*/
 
 
 
