@@ -2,21 +2,7 @@
 
 const targetCityName = "Graz";
 
-function createAllCityBoxes(cityName) {
-    for (let city of cities) {
-        const cityBox = document.createElement("div");
-        document.querySelector("#cities").appendChild(cityBox);
-        cityBox.setAttribute("class", "cityBox");
-        cityBox.innerHTML = city.name;
-        if (cityName === city.name) {
-            let h2 = document.querySelector("h2");
-            h2.innerHTML =`${city.name} (${city.country})`;
-            document.querySelector("title").innerHTML =`${city.name}`;
-            cityBox.setAttribute("class", "cityBox");
-        }
-    }
-}
-createAllCityBoxes(targetCityName);
+
 
 function getTargetCityObject (cityName) {
     for (let city of cities) {
@@ -66,10 +52,25 @@ function findClosestFurthest (targetCityObject) {
             }
         }
     }
-
+    return [closestCityID, closestValue, furthestCityID, furthestValue]
 }
 
+let closestFurthest = findClosestFurthest(targetCityObject)
 
+function createAllCityBoxes(cityName) {
+    for (let city of cities) {
+        const cityBox = document.createElement("div");
+        document.querySelector("#cities").appendChild(cityBox);
+        cityBox.setAttribute("class", "cityBox");
+        cityBox.innerHTML = city.name;
+        if (closestFurthest === null) {
+            continue;
+        }
+        if (cityName === city.name) {}
+    }
+}
+
+createAllCityBoxes(targetCityName);
 
 function createTable() {
     const table = document.querySelector("#table");
