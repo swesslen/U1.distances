@@ -1,10 +1,14 @@
+
+
 // Recommended: All functions declared here
 
-const targetCityName = prompt("Skriv en stad tack!");
+function isSameName(name1, name2) {
+    return name1.toLowerCase() === name2.toLowerCase();
+}
 
 function getTargetCityObject (cityName) {
     for (let city of cities) {
-        if (cityName === city.name) {
+        if (isSameName(cityName, city.name)) {
             return city;
         }
     }
@@ -13,8 +17,6 @@ function getTargetCityObject (cityName) {
     document.querySelector("title").innerHTML = `Not found`
     return null;
 }
-
-let targetCityObject = getTargetCityObject(targetCityName)
 
 function findClosestFurthest (targetCityObject) {
     if (targetCityObject === null) {
@@ -53,8 +55,6 @@ function findClosestFurthest (targetCityObject) {
     return [closestCityID, closestValue, furthestCityID, furthestValue]
 }
 
-let closestFurthest = findClosestFurthest(targetCityObject)
-
 function createAllCityBoxes(cityName) {
     for (let city of cities) {
         const cityBox = document.createElement("div");
@@ -64,7 +64,7 @@ function createAllCityBoxes(cityName) {
         if (closestFurthest === null) {
             continue;
         }
-        if (cityName === city.name) {
+        if (isSameName(cityName, city.name)) {
             cityBox.setAttribute("class", "target cityBox");
             document.querySelector("h2").innerHTML = `${city.name} (${city.country})`;
             document.querySelector("title").innerHTML = city.name;
@@ -80,7 +80,6 @@ function createAllCityBoxes(cityName) {
     }
 }
 
-createAllCityBoxes(targetCityName);
 
 function createTable() {
     const table = document.querySelector("#table");
@@ -107,7 +106,7 @@ function createTable() {
         namesRow.innerHTML = `${cities[row].id}-${cities[row].name}`
         namesRow.setAttribute("class", "head_row cell");
 
-        if ((row + 1) % 2 === 0) {
+        if ((row) % 2 === 0) {
             namesRow.setAttribute("class", "cell head_row even_row")
         }
         table.appendChild(namesRow);
@@ -115,7 +114,6 @@ function createTable() {
         for (let column = 0; column < cities.length; column++) {
             const cell = document.createElement("div");
             cell.setAttribute("class", "cell");
-            
 
             let distanceValue = null;
             for (let distance of distances) {
@@ -138,7 +136,7 @@ function createTable() {
             if (column % 2 === 0) {
                 cell.style.backgroundColor = "BurlyWood"
             }
-            if ((row + 1) % 2 === 0) {
+            if ((row) % 2 === 0) {
                 cell.setAttribute("class", "cell even_row")
             }
 
@@ -146,12 +144,14 @@ function createTable() {
         }
     }
 }
-createTable();
 
 
 // Recommended: constants with references to existing HTML-elements
 
-
-
 // Recommended: Ask for the city name and then the rest of the code
 
+const targetCityName = prompt("Skriv en stad tack!");
+let targetCityObject = getTargetCityObject(targetCityName)
+let closestFurthest = findClosestFurthest(targetCityObject)
+createAllCityBoxes(targetCityName);
+createTable();
