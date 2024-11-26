@@ -1,5 +1,3 @@
-
-
 // Recommended: All functions declared here
 
 function isSameName(name1, name2) {
@@ -72,10 +70,12 @@ function createAllCityBoxes(cityName) {
         if (closestFurthest[0] === city.id) {
             cityBox.setAttribute("class", "closest cityBox");
             cityBox.innerHTML = `${city.name} ligger ${closestFurthest[1] / 10} mil bort`;
+            document.querySelector("#closest").innerHTML = city.name
         }
         if (closestFurthest[2] === city.id) {
             cityBox.setAttribute("class", "furthest cityBox");
             cityBox.innerHTML = `${city.name} ligger ${closestFurthest[3] / 10} mil bort`;
+            document.querySelector("#furthest").innerHTML = city.name
         }
     }
 }
