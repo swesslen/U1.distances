@@ -13,6 +13,7 @@ function getTargetCityObject (cityName) {
     let h2 = document.querySelector("h2");
     h2.innerHTML = `${cityName} finns inte i databasen`;
     document.querySelector("title").innerHTML = `Not found`
+    document.querySelector("h3").textContent = ""
     return null;
 }
 
